@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Creator Tools</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(45deg, #1e3c72, #2a5298, #0066cc, #33ccff);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      width: 80%;
+      max-width: 1000px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .about {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #ddd;
+      text-align: center;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .tool-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      background-color: rgba(255, 255, 255, 0.3);
+      border: 2px solid #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease, background-color 0.3s, box-shadow 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .tool-btn:hover {
+      transform: scale(1.1);
+      background-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .tool-btn img {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Tools for Content Creators</h1>
+    <div class="about">
+      <p>Unlock the tools that every content creator needs to elevate their work. Discover top resources, find high-quality stock footage, and explore the best websites designed to help you thrive in the world of digital content creation.</p>
+    </div>
+
+    <div class="tool-buttons">
+      <!-- Search Tool Button -->
+      <div class="tool-btn" onclick="redirectToLoadingPage('file:///D:/games/New%20folder%20(3)/search%20tool%20.html')">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/search.png" alt="Search Icon">
+        <span>Search stock footage</span>
+      </div>
+      <!-- Best Sites Button -->
+      <div class="tool-btn" onclick="redirectToLoadingPage('file:///D:/games/New%20folder%20(3)/Best%20Sites%20for%20Content%20Creators.html')">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/worldwide-location.png" alt="Best Sites Icon">
+        <span>Best Sites for Content Creators</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function redirectToLoadingPage(url) {
+
+      window.location.href = 'loading.html?url=' + encodeURIComponent(url)
+    }
+  </script>
+
+</body>
+</html>
