@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Best Sites for Content Creators </title>
+    <style>
+        /* خلفية ديناميكية متحركة */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ff0066, #ff6600, #ffcc00, #33cc33, #3399ff, #9933ff);
+            background-size: 600% 600%;
+            animation: gradientShift 15s ease infinite;
+            color: #fff;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* العنوان */
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* الحاوية */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        /* عند التمرير */
+        .container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تصميم المربع */
+        .box {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            font-size: 1.2em;
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .box p {
+            font-size: 1.4em;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* الرابط */
+        .link {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #ffcc00;
+            text-decoration: none;
+            display: none;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .box.active .link {
+            display: inline;
+        }
+
+        /* التفاعل عند الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 >Best Sites for Content Creators</h1>
+    <div class="container">
+        <!-- إضافة المربعات -->
+        <div class="box"><p>Canva</p><a class="link" href="https://www.canva.com" target="_blank">www.canva.com</a></div>
+        <div class="box"><p>Fantasy Name Generators</p><a class="link" href="https://www.fantasynamegenerators.com" target="_blank">www.fantasynamegenerators.com</a></div>
+        <div class="box"><p>Zapsplat</p><a class="link" href="https://www.zapsplat.com" target="_blank">www.zapsplat.com</a></div>
+        <div class="box"><p>Bensound</p><a class="link" href="https://www.bensound.com" target="_blank">www.bensound.com</a></div>
+        <div class="box"><p>Natural Readers</p><a class="link" href="https://www.naturalreaders.com" target="_blank">www.naturalreaders.com</a></div>
+        <div class="box"><p>Cartoonify</p><a class="link" href="https://www.cartoonify.de" target="_blank">www.cartoonify.de</a></div>
+        <div class="box"><p>Veed.io</p><a class="link" href="https://www.veed.io" target="_blank">www.veed.io</a></div>
+        <div class="box"><p>I Love PDF</p><a class="link" href="https://www.ilovepdf.com" target="_blank">www.ilovepdf.com</a></div>
+        <div class="box"><p>Y2mate</p><a class="link" href="https://www.y2mate.com" target="_blank">www.y2mate.com</a></div>
+        <div class="box"><p>LogoMakr</p><a class="link" href="https://www.logomakr.com" target="_blank">www.logomakr.com</a></div>
+        <div class="box"><p>Online OCR</p><a class="link" href="https://www.onlineocr.net" target="_blank">www.onlineocr.net</a></div>
+        <div class="box"><p>Kapwing</p><a class="link" href="https://www.kapwing.com" target="_blank">www.kapwing.com</a></div>
+        <div class="box"><p>Remove.bg</p><a class="link" href="https://www.remove.bg" target="_blank">www.remove.bg</a></div>
+        <div class="box"><p>Inkscape</p><a class="link" href="https://www.inkscape.org" target="_blank">www.inkscape.org</a></div>
+        <div class="box"><p>GIMP</p><a class="link" href="https://www.gimp.org" target="_blank">www.gimp.org</a></div>
+        <div class="box"><p>SoundCloud</p><a class="link" href="https://www.soundcloud.com" target="_blank">www.soundcloud.com</a></div>
+        <div class="box"><p>Ace Typing</p><a class="link" href="https://www.typing.com" target="_blank">www.typing.com</a></div>
+        <div class="box"><p>Flaticon</p><a class="link" href="https://www.flaticon.com" target="_blank">www.flaticon.com</a></div>
+        <div class="box"><p>Creative Fabrica</p><a class="link" href="https://www.creativefabrica.com" target="_blank">www.creativefabrica.com</a></div>
+        <div class="box"><p>DaFont</p><a class="link" href="https://www.dafont.com" target="_blank">www.dafont.com</a></div>
+        <div class="box"><p>Remove.bg</p><a class="link" href="https://www.remove.bg" target="_blank">www.remove.bg</a></div>
+    </div>
+
+    <script>
+        // Animation عند التمرير
+        const container = document.querySelector('.container');
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        container.classList.add('show');
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+        observer.observe(container);
+
+        // تفاعل المربعات
+        const boxes = document.querySelectorAll('.box');
+        boxes.forEach(box => {
+            box.addEventListener('click', () => {
+                boxes.forEach(b => b.classList.remove('active'));
+                box.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

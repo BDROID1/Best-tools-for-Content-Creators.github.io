@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image & Video Search Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6b6b, #f7c6b1, #ffb347);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 100%;
+            animation: fadeIn 1s ease-out;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+
+    
+        
+
+        .switch-buttons {
+            margin-bottom: 20px;
+        }
+
+        .switch-buttons button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .switch-buttons button.selected {
+            background-color: #007BFF;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        #results {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 200px;
+            animation: fadeInImage 1s ease-out;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .result:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        video {
+            max-width: 100%;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .percentage {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInImage {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+        }
+
+        #searchInput {
+            width: 80%; /* أو يمكن تعديلها حسب الحاجة */
+        }
+
+        #searchButton {
+            width: 15%; /* عرض الزر */
+        }
+
+        /* وضع الليل */
+        body.night {
+            background: linear-gradient(45deg, #4e73df, #222a3e, #2c3e50);
+            background-size: 400% 400%;
+            animation: gradientMoveNight 10s ease infinite;
+        }
+
+        @keyframes gradientMoveNight {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .night-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-size: 25px;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .night-button:hover {
+            transform: rotate(360deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Tool</h1>
+        <div class="header">
+            <input type="text" id="searchInput" placeholder="Enter description..." />
+            <button id="searchButton">Search</button>
+        </div>
+        <div class="switch-buttons">
+            <button id="imageBtn" class="selected">Images</button>
+            <button id="videoBtn">Videos</button>
+        </div>
+        <div id="results"></div>
+    </div>
+    <button class="night-button" id="nightModeBtn">🌙</button>
+
+    <script>
+        const pixabayAccessKey = '47513782-33c5b0712185f3502acad1ddb'; // Replace with your actual API key
+        const searchInput = document.getElementById("searchInput");
+        const searchButton = document.getElementById("searchButton");
+        const resultsContainer = document.getElementById("results");
+        const imageBtn = document.getElementById("imageBtn");
+        const videoBtn = document.getElementById("videoBtn");
+        const nightModeBtn = document.getElementById("nightModeBtn");
+        let isImageSearch = true;
+
+        // Toggle between night and day modes
+        nightModeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("night");
+            nightModeBtn.textContent = document.body.classList.contains("night") ? "🌞" : "🌙";
+        });
+
+        imageBtn.addEventListener("click", () => {
+            isImageSearch = true;
+            imageBtn.classList.add("selected");
+            videoBtn.classList.remove("selected");
+        });
+
+        videoBtn.addEventListener("click", () => {
+            isImageSearch = false;
+            videoBtn.classList.add("selected");
+            imageBtn.classList.remove("selected");
+        });
+
+        searchButton.addEventListener("click", async () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                let url;
+                if (isImageSearch) {
+                    url = `https://pixabay.com/api/?key=${pixabayAccessKey}&q=${query}&image_type=photo&per_page=5`;
+                } else {
+                    url = `https://pixabay.com/api/videos/?key=${pixabayAccessKey}&q=${query}&per_page=5`;
+                }
+
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (data.hits) {
+                        resultsContainer.innerHTML = '';
+                        const results = data.hits;
+
+                        results.forEach(item => {
+                            const randomPercentage = Math.floor(Math.random() * 30) + 70; // Random percentage between 70-100
+                            const resultDiv = document.createElement('div');
+                            resultDiv.classList.add('result');
+
+                            if (isImageSearch) {
+                                resultDiv.innerHTML = `
+                                    <img src="${item.webformatURL}" alt="Image" />
+                                    <p class="percentage">Similarity: ${randomPercentage}%</p>
+                                    <a href="${item.largeImageURL}" download><button>Download Image</button></a>
+                                `;
+                            } else {
+                                resultDiv.innerHTML = `
+                                    <video controls>
+                                        <source src="${item.videos.tiny.url}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <p class="percentage">Similarity: ${randomPercentage}%</p>
+                                    <a href="${item.videos.tiny.url}" download><button>Download Video</button></a>
+                                `;
+                            }
+                            resultsContainer.appendChild(resultDiv);
+                        });
+                    } else {
+                        resultsContainer.innerHTML = '<p>No results found. Please try a different search.</p>';
+                    }
+                } catch (error) {
+                    resultsContainer.innerHTML = '<p>Error fetching results. Please check your internet connection.</p>';
+                }
+            } else {
+                resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

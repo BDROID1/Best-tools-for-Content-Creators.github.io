@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+
+
+
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="GGgif.gif" alt="Loading">
+
+
+  <script>
+
+    setTimeout(function() {
+      const url = new URLSearchParams(window.location.search).get('url');
+      window.location.href = url;
+    }, 2000);
+  </script>
+
+</body>
+</html>
